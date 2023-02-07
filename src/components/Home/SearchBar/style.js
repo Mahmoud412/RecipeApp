@@ -43,6 +43,24 @@ const styles = StyleSheet.create({
     marginRight: 10,
     color: 'black',
   },
+  flatList: {
+    borderRadius: 10,
+    backgroundColor: 'white',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+    marginLeft: 10,
+    marginBottom: 10,
+    marginRight: 10,
+  },
+  flatListText: {
+    fontSize: 18,
+    fontWeight: '400',
+    padding: 10,
+  },
 });
 
 export default styles;

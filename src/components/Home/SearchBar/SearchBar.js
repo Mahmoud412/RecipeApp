@@ -2,9 +2,7 @@ import {
   View,
   Text,
   TextInput,
-  StyleSheet,
   SafeAreaView,
-  Button,
   FlatList,
   TouchableOpacity,
 } from 'react-native';
@@ -48,25 +46,11 @@ const SearchBar = () => {
       {query ? (
         <View>
           <FlatList
-            style={{
-              borderRadius: 10,
-              backgroundColor: 'white',
-              shadowOffset: {
-                width: 0,
-                height: 3,
-              },
-              shadowOpacity: 0.29,
-              shadowRadius: 4.65,
-              marginLeft: 10,
-              marginBottom: 10,
-              marginRight: 10,
-            }}
+            style={styles.flatList}
             data={results}
             renderItem={({item}) => (
               <TouchableOpacity>
-                <Text style={{fontSize: 18, fontWeight: '400', margin: 10}}>
-                  {item.display}
-                </Text>
+                <Text style={styles.flatListText}>{item.display}</Text>
               </TouchableOpacity>
             )}
           />
