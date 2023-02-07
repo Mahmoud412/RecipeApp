@@ -30,7 +30,7 @@ export const fetchRecipes = () => async dispatch => {
   try {
     dispatch(fetchRecipesStart());
     const response = await fetch(
-      `${baseUrl}/list?from=0&size=20&tags=under_30_minutes`,
+      `${baseUrl}/list?from=0&size=30&tags=under_30_minutes`,
       options,
     );
     const recipes = await response.json();
