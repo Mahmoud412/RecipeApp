@@ -10,6 +10,7 @@ import React, {useEffect, useState} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import styles from './style';
 import {baseUrl, options} from '../../../service/Api';
+
 const SearchBar = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
