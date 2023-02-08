@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {baseUrl, options} from '../../service/Api';
-export const recipesSlice = createSlice({
-  name: 'recipes',
+export const recipesDetailsSlice = createSlice({
+  name: 'recipesDetails',
   initialState: {
     recipes: [],
     loading: false,
@@ -24,20 +24,22 @@ export const recipesSlice = createSlice({
 });
 
 export const {fetchRecipesStart, fetchRecipesSuccess, fetchRecipesFailure} =
-  recipesSlice.actions;
+  recipesDetailsSlice.actions;
 
-export const fetchRecipes = () => async dispatch => {
+export const fetchRecipeDetails = id => async dispatch => {
+  console.log(`id in the slice${id}`);
   try {
     dispatch(fetchRecipesStart());
     const response = await fetch(
-      `${baseUrl}/list?from=0&size=10&tags=under_30_minutes`,
+      `https://tasty.p.rapidapi.com/recipes/get-more-info?id=${id}`,
       options,
     );
     const recipes = await response.json();
-    dispatch(fetchRecipesSuccess(recipes.results));
+    dispatch(fetchRecipesSuccess(recipes));
+    console.log(recipes);
   } catch (error) {
     dispatch(fetchRecipesFailure(error.message));
   }
 };
 
-export default recipesSlice.reducer;
+export default recipesDetailsSlice.reducer;
