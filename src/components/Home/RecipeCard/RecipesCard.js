@@ -10,9 +10,11 @@ import React, {useEffect, useState} from 'react';
 import styles from './style';
 import {useSelector, useDispatch} from 'react-redux';
 import {fetchRecipes} from '../../.././redux/store';
+import {useNavigation} from '@react-navigation/native';
 
 const RecipesCard = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const {recipes, loading, error} = useSelector(state => state.recipes);
   useEffect(() => {
     dispatch(fetchRecipes());
@@ -43,24 +45,20 @@ const RecipesCard = () => {
           onEndReached={fetchRecipes}
           renderItem={({item}) => (
             <View>
-              <TouchableOpacity style={styles.subContainer}>
+              <TouchableOpacity
+                style={styles.subContainer}
+                onPress={() => navigation.navigate('RecipeDetails', item.id)}>
                 <Image
                   style={styles.image}
                   source={{uri: item.thumbnail_url}}
                 />
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                  }}>
+                <View style={styles.textContainer}>
                   <Text style={styles.text}>{item.name}</Text>
                   <Text style={styles.text}>{item.yields}</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity>
-                <Text style={{padding: 10, fontSize: 16, fontWeight: 'bold'}}>
-                  See similar reiceps{' '}
-                </Text>
+              <TouchableOpacity style={styles.seeMoreTextContainer}>
+                <Text style={styles.seeMoreText}>See similar reiceps </Text>
               </TouchableOpacity>
             </View>
           )}

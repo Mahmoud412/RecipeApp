@@ -31,6 +31,22 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '400',
   },
+  textContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  seeMoreText: {
+    padding: 10,
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  seeMoreTextContainer: {
+    backgroundColor: 'white',
+    borderRadius: 15,
+    padding: 10,
+    margin: 10,
+  },
 });
 
 export default styles;
