@@ -37,50 +37,54 @@ const RecipeDetails = () => {
   }
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.headerView}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <AntDesign name="left" size={25} />
-        </TouchableOpacity>
-        <MaterialIcons name="favorite-border" size={30} color="#e8b2b3" />
-      </View>
-      <View style={styles.subContainer}>
-        <Image style={styles.image} source={{uri: recipes.thumbnail_url}} />
-      </View>
-      <View style={styles.RecipeNameView}>
-        <Text style={styles.recipeName}>{recipes.name}</Text>
-        <View style={styles.iconView}>
-          <Ionicons name="timer-outline" size={20} color="#e8b2b3" />
-          <Text style={styles.recipeMin}>{recipes.cook_time_minutes} min</Text>
+      <ScrollView style={{height: '100%', width: '100%'}}>
+        <View style={styles.headerView}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <AntDesign name="left" size={25} />
+          </TouchableOpacity>
+          <MaterialIcons name="favorite-border" size={30} color="#e8b2b3" />
         </View>
-      </View>
-      <Ingredients />
-      <ScrollView style={{height: '100%'}}>
-        <View style={{margin: 10}}>
-          <View style={{flexDirection: 'row'}}>
-            <Text style={styles.description}>Description</Text>
-          </View>
-          <Text style={styles.descriptionText}>{recipes.description}</Text>
+        <View style={styles.subContainer}>
+          <Image style={styles.image} source={{uri: recipes.thumbnail_url}} />
         </View>
-        <View style={{margin: 10}}>
-          <Text style={styles.description}>Instructions</Text>
-          {recipes.instructions.map((e, index) => (
-            <Text key={index} style={styles.descriptionText}>
-              {e.display_text}
+        <View style={styles.RecipeNameView}>
+          <Text style={styles.recipeName}>{recipes.name}</Text>
+          <View style={styles.iconView}>
+            <Ionicons name="timer-outline" size={20} color="#e8b2b3" />
+            <Text style={styles.recipeMin}>
+              {recipes.cook_time_minutes} min
             </Text>
-          ))}
+          </View>
         </View>
-        <Nutrition
-          fat={recipes.nutrition.fat}
-          protein={recipes.nutrition.protein}
-          sugar={recipes.nutrition.sugar}
-          fiber={recipes.nutrition.fiber}
-          carbohydrates={recipes.nutrition.carbohydrates}
-          calories={recipes.nutrition.calories}
-        />
-        <ShowVideo
-          url={recipes.original_video_url}
-          poster={recipes.thumbnail_url}
-        />
+        <Ingredients />
+        <View style={{height: '100%'}}>
+          <View style={{margin: 10}}>
+            <View style={{flexDirection: 'row'}}>
+              <Text style={styles.description}>Description</Text>
+            </View>
+            <Text style={styles.descriptionText}>{recipes.description}</Text>
+          </View>
+          <View style={{margin: 10}}>
+            <Text style={styles.description}>Instructions</Text>
+            {recipes.instructions.map((e, index) => (
+              <Text key={index} style={styles.descriptionText}>
+                {e.display_text}
+              </Text>
+            ))}
+          </View>
+          <Nutrition
+            fat={recipes.nutrition.fat}
+            protein={recipes.nutrition.protein}
+            sugar={recipes.nutrition.sugar}
+            fiber={recipes.nutrition.fiber}
+            carbohydrates={recipes.nutrition.carbohydrates}
+            calories={recipes.nutrition.calories}
+          />
+          <ShowVideo
+            url={recipes.original_video_url}
+            poster={recipes.thumbnail_url}
+          />
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

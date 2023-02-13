@@ -50,7 +50,14 @@ const RecipesCard = () => {
                   <Text style={styles.text}>{item.yields}</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.seeMoreTextContainer}>
+              <TouchableOpacity
+                style={styles.seeMoreTextContainer}
+                onPress={() =>
+                  navigation.navigate('SimilaritiesRecipesScreen', {
+                    id: item.id,
+                    name: item.name,
+                  })
+                }>
                 <Text style={styles.seeMoreText}>See similar reiceps </Text>
               </TouchableOpacity>
             </View>

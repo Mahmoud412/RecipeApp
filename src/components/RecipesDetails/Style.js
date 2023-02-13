@@ -53,9 +53,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '200',
   },
-  nutritionText: {
-    marginHorizontal: 10,
-    fontWeight: '300',
-  },
 });
 export default styles;
