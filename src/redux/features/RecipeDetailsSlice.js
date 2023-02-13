@@ -36,7 +36,6 @@ export const fetchRecipeDetails = id => async dispatch => {
     );
     const recipes = await response.json();
     dispatch(fetchRecipesSuccess(recipes));
-    console.log(recipes);
   } catch (error) {
     dispatch(fetchRecipesFailure(error.message));
   }

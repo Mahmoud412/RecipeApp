@@ -1,17 +1,11 @@
-import {
-  View,
-  Text,
-  FlatList,
-  Image,
-  TouchableOpacity,
-  Button,
-} from 'react-native';
+import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import styles from './style';
 import {useSelector, useDispatch} from 'react-redux';
 import {fetchRecipes} from '../../.././redux/store';
 import {useNavigation} from '@react-navigation/native';
-
+import Loading from '../../Loading';
+import Error from '../../Error';
 const RecipesCard = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
@@ -21,16 +15,15 @@ const RecipesCard = () => {
   }, [dispatch]);
 
   if (loading) {
-    return (
-      <View>
-        <Text>Loading...</Text>
-      </View>
-    );
+    return <Loading />;
   }
   if (error) {
     return (
       <View>
-        <Text>{error}</Text>
+        <Error />
+        <View style={{margin: 10}}>
+          <Text style={styles.ErrorText}>{error}!</Text>
+        </View>
       </View>
     );
   }
