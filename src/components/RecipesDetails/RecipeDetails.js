@@ -12,6 +12,7 @@ import Loading from '../Loading';
 import Error from '../Error';
 import styles from './Style';
 import Nutrition from './Nutrition';
+import ShowVideo from './ShowVideo';
 const RecipeDetails = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -62,8 +63,10 @@ const RecipeDetails = () => {
         </View>
         <View style={{margin: 10}}>
           <Text style={styles.description}>Instructions</Text>
-          {recipes.instructions.map(e => (
-            <Text style={styles.descriptionText}>{e.display_text}</Text>
+          {recipes.instructions.map((e, index) => (
+            <Text key={index} style={styles.descriptionText}>
+              {e.display_text}
+            </Text>
           ))}
         </View>
         <Nutrition
@@ -73,6 +76,10 @@ const RecipeDetails = () => {
           fiber={recipes.nutrition.fiber}
           carbohydrates={recipes.nutrition.carbohydrates}
           calories={recipes.nutrition.calories}
+        />
+        <ShowVideo
+          url={recipes.original_video_url}
+          poster={recipes.thumbnail_url}
         />
       </ScrollView>
     </SafeAreaView>
