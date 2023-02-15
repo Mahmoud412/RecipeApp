@@ -27,13 +27,9 @@ export const {fetchRecipesStart, fetchRecipesSuccess, fetchRecipesFailure} =
   recipesDetailsSlice.actions;
 
 export const fetchRecipeDetails = id => async dispatch => {
-  console.log(`id in the slice${id}`);
   try {
     dispatch(fetchRecipesStart());
-    const response = await fetch(
-      `https://tasty.p.rapidapi.com/recipes/get-more-info?id=${id}`,
-      options,
-    );
+    const response = await fetch(`${baseUrl}/get-more-info?id=${id}`, options);
     const recipes = await response.json();
     dispatch(fetchRecipesSuccess(recipes));
   } catch (error) {

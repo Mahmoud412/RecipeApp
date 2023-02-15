@@ -27,7 +27,6 @@ export const {fetchRecipesStart, fetchRecipesSuccess, fetchRecipesFailure} =
   simlarRecipesSlice.actions;
 
 export const fetchSimlarRecipes = id => async dispatch => {
-  console.log(`id in the slice${id}`);
   try {
     dispatch(fetchRecipesStart());
     const response = await fetch(
