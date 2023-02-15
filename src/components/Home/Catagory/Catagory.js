@@ -1,10 +1,11 @@
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import styles from './styles';
-
+import {useNavigation} from '@react-navigation/native';
 const categories = ['Food', 'Cocktail', 'Desserts'];
 
 const Catagory = () => {
+  const navigation = useNavigation();
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
 
   return (
@@ -21,7 +22,10 @@ const Catagory = () => {
                   selectedCategory === category ? '#fc5050' : '#ffff',
               },
             ]}
-            onPress={() => setSelectedCategory(category)}>
+            onPress={() => {
+              setSelectedCategory(category),
+                navigation.navigate('DessertsScreen');
+            }}>
             <View>
               <Text
                 style={[

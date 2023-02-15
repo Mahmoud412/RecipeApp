@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import HomeScreen from '../screens/Home/HomeScreen';
 import RecipeDetailsScreen from '../screens/RecipeDetails/RecipeDetailsScreen';
 import SimilaritiesRecipesScreen from '../screens/similarities-Recipes/SimilaritiesRecipesScreen';
+import DessertScreen from '../screens/Desserts/DessertScreen';
 const Stack = createStackNavigator();
 
 const Router = () => {
@@ -24,6 +25,11 @@ const Router = () => {
         <Stack.Screen
           name="SimilaritiesRecipesScreen"
           component={SimilaritiesRecipesScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="DessertsScreen"
+          component={DessertScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
