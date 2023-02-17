@@ -8,7 +8,7 @@ module.exports = {
         envName: 'APP_ENV',
         moduleName: '@env',
         path: '.env',
-        safe: false,
+        safe: true,
         allowUndefined: false,
         verbose: false,
       },
