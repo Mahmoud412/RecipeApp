@@ -6,6 +6,7 @@ import HomeScreen from '../screens/Home/HomeScreen';
 import RecipeDetailsScreen from '../screens/RecipeDetails/RecipeDetailsScreen';
 import SimilaritiesRecipesScreen from '../screens/similarities-Recipes/SimilaritiesRecipesScreen';
 import DessertScreen from '../screens/Desserts/DessertScreen';
+import DrawerRoute from './DrawerRoute';
 const Stack = createStackNavigator();
 
 const Router = () => {
@@ -14,7 +15,7 @@ const Router = () => {
       <Stack.Navigator initialRouteName="home">
         <Stack.Screen
           name="home"
-          component={HomeScreen}
+          component={DrawerRoute}
           options={{headerShown: false}}
         />
         <Stack.Screen
