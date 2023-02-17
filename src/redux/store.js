@@ -9,12 +9,14 @@ import {
   fetchSimlarRecipes,
 } from './features/SimilarRecipesSlice';
 import {dessertsSlice, fetchDessert} from './features/DessertsSlice';
+import {FavoriteRecipeSlice} from './features/FavoriteRecipeSlice';
 const store = configureStore({
   reducer: {
     recipes: recipesSlice.reducer,
     recipesrecipes: recipesDetailsSlice.reducer,
     simlarrecipes: simlarRecipesSlice.reducer,
     desserts: dessertsSlice.reducer,
+    favorit: FavoriteRecipeSlice.reducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

@@ -15,7 +15,7 @@ const Router = () => {
       <Stack.Navigator>
         <Stack.Screen
           name="home"
-          component={DrawerRoute}
+          component={HomeScreen}
           options={{headerShown: false}}
         />
         <Stack.Screen

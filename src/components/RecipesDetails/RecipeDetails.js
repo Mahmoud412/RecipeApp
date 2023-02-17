@@ -1,7 +1,7 @@
 import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
 import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {useSelector, useDispatch} from 'react-redux';
 import {fetchRecipeDetails} from '../.././redux/store';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -13,13 +13,11 @@ import Error from '../Error';
 import styles from './Style';
 import Nutrition from './Nutrition';
 import ShowVideo from './ShowVideo';
-const RecipeDetails = () => {
+const RecipeDetails = props => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const route = useRoute();
-  const id = route.params;
+  const id = props.id;
   const {recipes, loading, error} = useSelector(state => state.recipesrecipes);
-  console.log('Details', recipes);
 
   useEffect(() => {
     dispatch(fetchRecipeDetails(id));
@@ -64,7 +62,7 @@ const RecipeDetails = () => {
             </View>
             <Text style={styles.descriptionText}>{recipes.description}</Text>
           </View>
-          {/* <View style={{margin: 10}}>
+          <View style={{margin: 10}}>
             <Text style={styles.description}>Instructions</Text>
             {recipes.instructions.map((e, index) => (
               <Text key={index} style={styles.descriptionText}>
@@ -79,7 +77,7 @@ const RecipeDetails = () => {
             fiber={recipes.nutrition.fiber}
             carbohydrates={recipes.nutrition.carbohydrates}
             calories={recipes.nutrition.calories}
-          /> */}
+          />
           <ShowVideo
             url={recipes.original_video_url}
             poster={recipes.thumbnail_url}
