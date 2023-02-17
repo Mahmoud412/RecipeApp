@@ -12,7 +12,7 @@ const Stack = createStackNavigator();
 const Router = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="home">
+      <Stack.Navigator>
         <Stack.Screen
           name="home"
           component={DrawerRoute}
