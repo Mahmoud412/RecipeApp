@@ -13,6 +13,11 @@ import Error from '../Error';
 import styles from './Style';
 import Nutrition from './Nutrition';
 import ShowVideo from './ShowVideo';
+import {
+  addToFavorites,
+  removeFromFavorites,
+  isFavRecipeSelector,
+} from '../../redux/features/FavoriteRecipeSlice';
 const RecipeDetails = props => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -22,6 +27,7 @@ const RecipeDetails = props => {
   useEffect(() => {
     dispatch(fetchRecipeDetails(id));
   }, [dispatch]);
+  const isFev = useSelector(state => isFavRecipeSelector(state, recipes.id));
 
   if (loading) {
     return <Loading />;
@@ -40,7 +46,23 @@ const RecipeDetails = props => {
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <AntDesign name="left" size={25} />
           </TouchableOpacity>
-          <MaterialIcons name="favorite-border" size={30} color="#e8b2b3" />
+          <TouchableOpacity
+            onPress={() => {
+              const data = {
+                id: recipes.id,
+                name: recipes.name,
+                thumbnail_url: recipes.thumbnail_url,
+              };
+              dispatch(
+                isFev ? removeFromFavorites(data) : addToFavorites(data),
+              );
+            }}>
+            <MaterialIcons
+              name={isFev ? 'favorite' : 'favorite-border'}
+              size={30}
+              color="#e8b2b3"
+            />
+          </TouchableOpacity>
         </View>
         <View style={styles.subContainer}>
           <Image style={styles.image} source={{uri: recipes.thumbnail_url}} />
@@ -78,6 +100,7 @@ const RecipeDetails = props => {
             carbohydrates={recipes.nutrition.carbohydrates}
             calories={recipes.nutrition.calories}
           />
+          {}
           <ShowVideo
             url={recipes.original_video_url}
             poster={recipes.thumbnail_url}

@@ -1,6 +1,5 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
-import Video from 'react-native-video';
 import VideoPlayer from 'react-native-video-player';
 const ShowVideo = ({url, poster}) => {
   return (
@@ -8,16 +7,18 @@ const ShowVideo = ({url, poster}) => {
       <View>
         <Text style={styles.text}>Watch The Recipe:</Text>
       </View>
-      <VideoPlayer
-        video={{
-          uri: url,
-        }}
-        videoWidth={1500}
-        videoHeight={1000}
-        autoplay
-        defaultMuted
-        thumbnail={{uri: poster}}
-      />
+      {url ? (
+        <VideoPlayer
+          video={{
+            uri: url,
+          }}
+          videoWidth={1500}
+          videoHeight={1000}
+          autoplay
+          defaultMuted
+          thumbnail={{uri: poster}}
+        />
+      ) : null}
     </View>
   );
 };

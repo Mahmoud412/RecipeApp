@@ -15,11 +15,11 @@ const Router = () => {
       <Stack.Navigator>
         <Stack.Screen
           name="home"
-          component={HomeScreen}
+          component={DrawerRoute}
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="RecipeDetails"
+          name="RecipeDetailsScreen"
           component={RecipeDetailsScreen}
           options={{headerShown: false}}
         />

@@ -5,7 +5,7 @@ import {useRoute} from '@react-navigation/native';
 
 const RecipeDetailsScreen = () => {
   const route = useRoute();
-  const id = route.params;
+  const id = route.params.id;
   return (
     <View>
       <RecipeDetails id={id} />

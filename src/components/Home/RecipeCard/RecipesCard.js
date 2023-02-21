@@ -40,7 +40,9 @@ const RecipesCard = () => {
             <View>
               <TouchableOpacity
                 style={styles.subContainer}
-                onPress={() => navigation.navigate('RecipeDetails', item.id)}>
+                onPress={() =>
+                  navigation.navigate('RecipeDetailsScreen', {id: item.id})
+                }>
                 <Image
                   style={styles.image}
                   source={{uri: item.thumbnail_url}}
