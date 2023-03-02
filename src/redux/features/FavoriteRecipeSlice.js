@@ -1,4 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const initialState = {
   items: [],
@@ -33,7 +34,6 @@ export const {addToFavorites, removeFromFavorites} =
   FavoriteRecipeSlice.actions;
 
 export const selectFavoritRecipe = state => state.favorit.items;
-
 export const selectFavoritRecipeWithId = (state, id) =>
   state.favorit.items.find(item => item.id === id);
 

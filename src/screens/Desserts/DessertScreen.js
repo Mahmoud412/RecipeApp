@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import DessertCard from '../../components/desserts/DessertsCard';
-const dessertScreen = () => {
+const DessertScreen = () => {
   return (
     <View>
       <DessertCard />
@@ -9,4 +9,4 @@ const dessertScreen = () => {
   );
 };
 
-export default dessertScreen;
+export default DessertScreen;

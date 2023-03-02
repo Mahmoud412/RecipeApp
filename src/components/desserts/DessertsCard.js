@@ -14,29 +14,29 @@ import Error from '../Error';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 import {fetchDessert} from '../../redux/store';
-const data = [
-  {
-    img: 'https://www.onceuponachef.com/images/2017/12/cheesecake-1200x1393.jpg',
-    name: 'chees',
-  },
-  {
-    img: 'https://www.onceuponachef.com/images/2017/12/cheesecake-1200x1393.jpg',
-    name: 'chees',
-  },
-  {
-    img: 'https://www.onceuponachef.com/images/2017/12/cheesecake-1200x1393.jpg',
-    name: 'chees',
-  },
-];
+// const data = [
+//   {
+//     img: 'https://www.onceuponachef.com/images/2017/12/cheesecake-1200x1393.jpg',
+//     name: 'chees',
+//   },
+//   {
+//     img: 'https://www.onceuponachef.com/images/2017/12/cheesecake-1200x1393.jpg',
+//     name: 'chees',
+//   },
+//   {
+//     img: 'https://www.onceuponachef.com/images/2017/12/cheesecake-1200x1393.jpg',
+//     name: 'chees',
+//   },
+// ];
 const DessertsCard = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const {dessert, loading, error} = useSelector(state => state.desserts);
   console.log(dessert);
 
-  // useEffect(() => {
-  //   dispatch(fetchDessert());
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchDessert());
+  }, []);
   if (loading) {
     return <Loading />;
   }
@@ -52,7 +52,7 @@ const DessertsCard = () => {
         <AntDesign name="left" size={25} />
       </TouchableOpacity>
       <FlatList
-        data={data}
+        data={dessert}
         renderItem={({item}) => (
           <SafeAreaView>
             <TouchableOpacity

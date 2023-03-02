@@ -6,6 +6,7 @@ import {fetchRecipes} from '../../.././redux/store';
 import {useNavigation} from '@react-navigation/native';
 import Loading from '../../Loading';
 import Error from '../../Error';
+import RecipeGrid from '../../RecipeGrid';
 const RecipesCard = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
@@ -33,39 +34,7 @@ const RecipesCard = () => {
       <Text style={styles.headLine}>Popular</Text>
 
       <View>
-        <FlatList
-          data={recipes}
-          onEndReached={fetchRecipes}
-          renderItem={({item}) => (
-            <View>
-              <TouchableOpacity
-                style={styles.subContainer}
-                onPress={() =>
-                  navigation.navigate('RecipeDetailsScreen', {id: item.id})
-                }>
-                <Image
-                  style={styles.image}
-                  source={{uri: item.thumbnail_url}}
-                />
-                <View style={styles.textContainer}>
-                  <Text style={styles.text}>{item.name}</Text>
-                  <Text style={styles.text}>{item.yields}</Text>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.seeMoreTextContainer}
-                onPress={() =>
-                  navigation.navigate('SimilaritiesRecipesScreen', {
-                    id: item.id,
-                    name: item.name,
-                  })
-                }>
-                <Text style={styles.seeMoreText}>See similar reiceps </Text>
-              </TouchableOpacity>
-            </View>
-          )}
-          style={styles.list}
-        />
+        <RecipeGrid recipes={recipes} />
       </View>
     </View>
   );

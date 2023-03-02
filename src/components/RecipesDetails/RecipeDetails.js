@@ -33,17 +33,13 @@ const RecipeDetails = props => {
     return <Loading />;
   }
   if (error) {
-    return (
-      <View>
-        <Error error={error} />
-      </View>
-    );
+    return <Error error={error} />;
   }
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={{height: '100%', width: '100%'}}>
         <View style={styles.headerView}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
+          <TouchableOpacity onPress={() => navigation.navigate('home')}>
             <AntDesign name="left" size={25} />
           </TouchableOpacity>
           <TouchableOpacity
@@ -52,6 +48,7 @@ const RecipeDetails = props => {
                 id: recipes.id,
                 name: recipes.name,
                 thumbnail_url: recipes.thumbnail_url,
+                yields: recipes.yields,
               };
               dispatch(
                 isFev ? removeFromFavorites(data) : addToFavorites(data),
@@ -84,7 +81,7 @@ const RecipeDetails = props => {
             </View>
             <Text style={styles.descriptionText}>{recipes.description}</Text>
           </View>
-          <View style={{margin: 10}}>
+          {/* <View style={{margin: 10}}>
             <Text style={styles.description}>Instructions</Text>
             {recipes.instructions.map((e, index) => (
               <Text key={index} style={styles.descriptionText}>
@@ -99,8 +96,7 @@ const RecipeDetails = props => {
             fiber={recipes.nutrition.fiber}
             carbohydrates={recipes.nutrition.carbohydrates}
             calories={recipes.nutrition.calories}
-          />
-          {}
+          /> */}
           <ShowVideo
             url={recipes.original_video_url}
             poster={recipes.thumbnail_url}
