@@ -1,6 +1,6 @@
 import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
 import {combineReducers} from '@reduxjs/toolkit';
-import {persistStore, persistReducer} from 'redux-persist';
+import {persistReducer} from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {recipesSlice, fetchRecipes} from './features/RecipeSlice';
 import {
@@ -23,7 +23,7 @@ const reducers = combineReducers({
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['favorit', 'desserts'],
+  whitelist: ['favorit', 'desserts', 'simlarrecipes', 'recipes'],
 };
 const persistedReducer = persistReducer(persistConfig, reducers);
 

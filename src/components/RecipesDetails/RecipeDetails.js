@@ -81,7 +81,7 @@ const RecipeDetails = props => {
             </View>
             <Text style={styles.descriptionText}>{recipes.description}</Text>
           </View>
-          {/* <View style={{margin: 10}}>
+          <View style={{margin: 10}}>
             <Text style={styles.description}>Instructions</Text>
             {recipes.instructions.map((e, index) => (
               <Text key={index} style={styles.descriptionText}>
@@ -96,7 +96,7 @@ const RecipeDetails = props => {
             fiber={recipes.nutrition.fiber}
             carbohydrates={recipes.nutrition.carbohydrates}
             calories={recipes.nutrition.calories}
-          /> */}
+          />
           <ShowVideo
             url={recipes.original_video_url}
             poster={recipes.thumbnail_url}

@@ -22,7 +22,7 @@ const RecipeGrid = props => {
       <FlatList
         data={recipes}
         renderItem={({item}) => (
-          <View>
+          <View style={styles.container}>
             <View>
               <View>
                 <TouchableOpacity

@@ -1,8 +1,6 @@
 import {
-  View,
   Text,
   SafeAreaView,
-  ImageBackground,
   FlatList,
   Image,
   TouchableOpacity,
@@ -13,30 +11,19 @@ import Loading from '../Loading';
 import Error from '../Error';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
+import {DrawerActions} from '@react-navigation/native';
+import {data} from '../../assets/data/data';
 import {fetchDessert} from '../../redux/store';
-// const data = [
-//   {
-//     img: 'https://www.onceuponachef.com/images/2017/12/cheesecake-1200x1393.jpg',
-//     name: 'chees',
-//   },
-//   {
-//     img: 'https://www.onceuponachef.com/images/2017/12/cheesecake-1200x1393.jpg',
-//     name: 'chees',
-//   },
-//   {
-//     img: 'https://www.onceuponachef.com/images/2017/12/cheesecake-1200x1393.jpg',
-//     name: 'chees',
-//   },
-// ];
+
 const DessertsCard = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const {dessert, loading, error} = useSelector(state => state.desserts);
   console.log(dessert);
 
-  useEffect(() => {
-    dispatch(fetchDessert());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchDessert());
+  // }, []);
   if (loading) {
     return <Loading />;
   }
@@ -47,12 +34,17 @@ const DessertsCard = () => {
   return (
     <SafeAreaView>
       <TouchableOpacity
-        style={{margin: 10, left: 5}}
+        style={{margin: 10}}
+        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+        <AntDesign name="bars" size={35} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{margin: 10, left: 5, flex: 1}}
         onPress={() => navigation.goBack()}>
         <AntDesign name="left" size={25} />
       </TouchableOpacity>
       <FlatList
-        data={dessert}
+        data={data}
         renderItem={({item}) => (
           <SafeAreaView>
             <TouchableOpacity
